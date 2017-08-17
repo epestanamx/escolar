@@ -20,7 +20,7 @@
             <td>
                 {!! Form::open(['route' => ['estancias.destroy', $estancia->id], 'method' => 'delete']) !!}
                 <div class='btn-group'>
-                    <a href="{!! route('formatos.registro', [$estancia->proyecto->id]) !!}" class='btn btn-default btn-xs'><i class="glyphicon glyphicon-print"></i></a>
+                    <a href="{!! route('formatos.registro', [$estancia->proyecto->id]) !!}" class='btn btn-default btn-xs' target="_blank"><i class="glyphicon glyphicon-print"></i></a>
                     <a href="{!! route('estancias.show', [$estancia->id]) !!}" class='btn btn-default btn-xs'><i class="glyphicon glyphicon-eye-open"></i></a>
                     <a href="{!! route('estancias.edit', [$estancia->id]) !!}" class='btn btn-default btn-xs'><i class="glyphicon glyphicon-edit"></i></a>
                     {!! Form::button('<i class="glyphicon glyphicon-trash"></i>', ['type' => 'submit', 'class' => 'btn btn-danger btn-xs', 'onclick' => "return confirm('¿Desea eliminar el registro seleccionado?')"]) !!}

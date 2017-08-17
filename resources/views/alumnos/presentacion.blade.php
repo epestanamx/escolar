@@ -12,7 +12,7 @@
 
             <div class="box-body">
                 <div class="row">
-                    {!! Form::open(['route' => 'formatos.presentacion']) !!}
+                    {!! Form::open(['route' => 'formatos.presentacion', 'target' => '_blank']) !!}
 
                         <!-- Alumno Field -->
                         <div class="form-group col-sm-6">

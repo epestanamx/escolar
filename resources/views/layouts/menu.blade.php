@@ -1,6 +1,5 @@
 <li class="treeview
-    {{ Request::is('alumnos*') ? 'active' : '' }}
-    ">
+    {{ Request::is('alumnos*') ? 'active' : '' }}">
     <a href="#">
         <i class="fa fa-edit"></i>
         <span>Alumnos</span>
@@ -11,21 +10,26 @@
     <ul class="treeview-menu">
         <li><a href="{{ route('alumnos.index') }}"><i class="fa fa-circle-o"></i> Listado de alumnos</a></li>
         <li><a href="{{ route('alumnos.presentacion') }}"><i class="fa fa-circle-o"></i> Generar carta de presentación</a></li>
-        <li class="treeview ">
-            <a href="#">
-                <i class="fa fa-edit"></i>
-                <span>Proyectos</span>
-                <span class="pull-right-container">
+    </ul>
+</li>
+
+<li class="treeview
+    {{ Request::is('proyectos*') ? 'active' : '' }}
+    {{ Request::is('etapas*') ? 'active' : '' }}
+    {{ Request::is('estancias*') ? 'active' : '' }}
+    {{ Request::is('estadias*') ? 'active' : '' }}">
+    <a href="#">
+        <i class="fa fa-edit"></i>
+        <span>Proyectos</span>
+        <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
-            </a>
-            <ul class="treeview-menu">
-                <li><a href="{{ route('proyectos.index') }}"><i class="fa fa-circle-o"></i> Listado de proyectos</a></li>
-                <li><a href="{{ route('etapas.index') }}"><i class="fa fa-circle-o"></i> Etapas de los proyectos</a></li>
-                <li><a href="{{ route('estancias.index') }}"><i class="fa fa-circle-o"></i> Estancias</a></li>
-                <li><a href="{{ route('estadias.index') }}"><i class="fa fa-circle-o"></i> Estadias</a></li>
-            </ul>
-        </li>
+    </a>
+    <ul class="treeview-menu">
+        <li><a href="{{ route('proyectos.index') }}"><i class="fa fa-circle-o"></i> Listado de proyectos</a></li>
+        <li><a href="{{ route('etapas.index') }}"><i class="fa fa-circle-o"></i> Etapas de los proyectos</a></li>
+        <li><a href="{{ route('estancias.index') }}"><i class="fa fa-circle-o"></i> Estancias</a></li>
+        <li><a href="{{ route('estadias.index') }}"><i class="fa fa-circle-o"></i> Estadias</a></li>
     </ul>
 </li>
 
