@@ -57,3 +57,5 @@ Route::get('alumnos/generar/presentacion', 'AlumnoController@presentacion')->nam
 Route::post('formatos/presentacion', 'PrintController@presentacion')->name('formatos.presentacion');
 Route::get('formatos/definicion/{idProyecto}', 'PrintController@definicion')->name('formatos.definicion');
 Route::get('formatos/registro/{idProyecto}', 'PrintController@registro')->name('formatos.registro');
+
+Route::resource('cartaPresentacions', 'CartaPresentacionController');

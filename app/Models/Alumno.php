@@ -15,7 +15,7 @@ class Alumno extends Model
     use SoftDeletes;
 
     public $table = 'alumnos';
-    
+
     const CREATED_AT = 'created_at';
     const UPDATED_AT = 'updated_at';
 
@@ -27,12 +27,23 @@ class Alumno extends Model
         'matricula',
         'nombres',
         'apellidos',
+        'sexo',
         'email',
+        'email_oficial',
         'telefono',
         'nss',
+        'curp',
         'cuatrimestre',
         'grupo',
-        'idCarrera'
+        'idCarrera',
+        'tipo_sangre',
+        'contacto_nombres',
+        'contacto_apellidos',
+        'contacto_telefono',
+        'contacto_parentesco',
+        'contacto_direccion',
+        'password',
+        'activado'
     ];
 
     /**
@@ -46,11 +57,21 @@ class Alumno extends Model
         'nombres' => 'string',
         'apellidos' => 'string',
         'email' => 'string',
+        'email_oficial' => 'string',
         'telefono' => 'string',
         'nss' => 'string',
+        'curp' => 'string',
         'cuatrimestre' => 'string',
         'grupo' => 'string',
-        'idCarrera' => 'integer'
+        'idCarrera' => 'integer',
+        'tipo_sangre' => 'string',
+        'contacto_nombres' => 'string',
+        'contacto_apellidos' => 'string',
+        'contacto_telefono' => 'string',
+        'contacto_parentesco' => 'string',
+        'contacto_direccion' => 'string',
+        'password' => 'string',
+        'activado' => 'boolean',
     ];
 
     /**
@@ -59,7 +80,7 @@ class Alumno extends Model
      * @var array
      */
     public static $rules = [
-        
+
     ];
 
     /**

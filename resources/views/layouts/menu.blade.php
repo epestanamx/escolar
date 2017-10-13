@@ -61,4 +61,7 @@
         <li><a href="{{ route('empresas.index') }}"><i class="fa fa-circle-o"></i> Listado de empresas</a></li>
         <li><a href="{{ route('asesorEmpresarials.index') }}"><i class="fa fa-circle-o"></i> Asesores empresariales</a></li>
     </ul>
+</li><li class="{{ Request::is('cartaPresentacions*') ? 'active' : '' }}">
+    <a href="{!! route('cartaPresentacions.index') !!}"><i class="fa fa-edit"></i><span>CartaPresentacions</span></a>
 </li>
+

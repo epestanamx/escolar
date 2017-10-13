@@ -39,3 +39,5 @@ Route::resource('etapas', 'EtapaAPIController');
 Route::resource('estancias', 'EstanciaAPIController');
 
 Route::resource('estadias', 'EstadiasAPIController');
+
+Route::resource('carta_presentacions', 'CartaPresentacionAPIController');

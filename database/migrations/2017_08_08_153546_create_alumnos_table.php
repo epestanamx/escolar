@@ -18,11 +18,21 @@ class CreateAlumnosTable extends Migration
             $table->string('matricula')->unique();
             $table->string('nombres');
             $table->string('apellidos');
-            $table->string('email');
-            $table->string('telefono');
-            $table->string('nss');
-            $table->string('cuatrimestre');
-            $table->string('grupo');
+            $table->string('email')->nullable();
+            $table->string('email_oficial');
+            $table->string('telefono')->nullable();
+            $table->string('nss')->nullable();
+            $table->string('curp')->nullable();
+            $table->string('cuatrimestre')->nullable();
+            $table->string('grupo')->nullable();
+            $table->string('tipo_sangre')->nullable();
+            $table->string('contacto_nombres')->nullable();
+            $table->string('contacto_apellidos')->nullable();
+            $table->string('contacto_telefono')->nullable();
+            $table->string('contacto_parentesco')->nullable();
+            $table->string('contacto_direccion')->nullable();
+            $table->string('password');
+            $table->boolean('activado')->nullable();
             $table->integer('idCarrera')->unsigned();
             $table->foreign('idCarrera')
                 ->references('id')->on('carreras');

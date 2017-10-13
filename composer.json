@@ -18,6 +18,7 @@
         "jlapp/swaggervel": "dev-master",
         "laracasts/flash": "^3.0",
         "laravel/framework": "5.4.*",
+        "laravel/homestead": "^6.3",
         "laravel/tinker": "~1.0",
         "laravelcollective/html": "^5.4.0"
     },
