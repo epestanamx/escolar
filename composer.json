@@ -20,7 +20,9 @@
         "laravel/framework": "5.4.*",
         "laravel/homestead": "^6.3",
         "laravel/tinker": "~1.0",
-        "laravelcollective/html": "^5.4.0"
+        "laravelcollective/html": "^5.4.0",
+        "acoustep/entrust-gui": "5.2.x-dev",
+        "zizaco/entrust": "5.2.x-dev"
     },
     "require-dev": {
         "mockery/mockery": "0.9.*",
