@@ -19,9 +19,12 @@ class CreateUniversidadTable extends Migration
             $table->string('direccion');
             $table->string('telefono');
             $table->string('email');
-            $table->string('jefe_vinculacion_titulo');
-            $table->string('jefe_vinculacion_nombres');
-            $table->string('jefe_vinculacion_apellidos');
+            $table->string('rector_titulo')->nullable();
+            $table->string('rector_nombres')->nullable();
+            $table->string('rector_apellidos')->nullable();
+            $table->string('jefe_vinculacion_titulo')->nullable();
+            $table->string('jefe_vinculacion_nombres')->nullable();
+            $table->string('jefe_vinculacion_apellidos')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

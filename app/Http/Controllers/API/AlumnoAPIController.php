@@ -54,6 +54,10 @@ class AlumnoAPIController extends AppBaseController
     public function store(CreateAlumnoAPIRequest $request)
     {
         $input = $request->all();
+        $input['activado'] = false;
+        $input['email_oficial'] = $input['matricula'] . '@estudiantes.upqroo.edu.mx';
+        $input['password'] = $input['matricula'];
+        $input['token'] = str_random(40);
 
         $alumnos = $this->alumnoRepository->create($input);
 
@@ -125,5 +129,20 @@ class AlumnoAPIController extends AppBaseController
         $alumno->delete();
 
         return $this->sendResponse($id, 'Alumno deleted successfully');
+    }
+
+    public function verificar($token)
+    {
+        $alumno = $this->alumnoRepository->findWhere(['token' => $token])->first();
+
+        if (empty($alumno)) {
+            return $this->sendError('El token de activación de expiró.');
+        }
+
+        $alumno->activado = true;
+        $alumno->token = null;
+        $alumno->save();
+
+        return $this->sendResponse($id, 'Alumno activado de forma correcta.');
     }
 }

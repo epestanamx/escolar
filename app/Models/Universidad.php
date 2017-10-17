@@ -15,7 +15,7 @@ class Universidad extends Model
     use SoftDeletes;
 
     public $table = 'universidad';
-    
+
     const CREATED_AT = 'created_at';
     const UPDATED_AT = 'updated_at';
 
@@ -28,6 +28,9 @@ class Universidad extends Model
         'direccion',
         'telefono',
         'email',
+        'rector_titulo',
+        'rector_nombres',
+        'rector_apellidos',
         'jefe_vinculacion_titulo',
         'jefe_vinculacion_nombres',
         'jefe_vinculacion_apellidos'
@@ -55,8 +58,8 @@ class Universidad extends Model
      * @var array
      */
     public static $rules = [
-        
+
     ];
 
-    
+
 }

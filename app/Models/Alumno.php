@@ -43,6 +43,7 @@ class Alumno extends Model
         'contacto_parentesco',
         'contacto_direccion',
         'password',
+        'token',
         'activado'
     ];
 
@@ -81,6 +82,11 @@ class Alumno extends Model
      */
     public static $rules = [
 
+    ];
+
+    protected $hidden = [
+      'password',
+      'token'
     ];
 
     /**

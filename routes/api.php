@@ -27,6 +27,7 @@ Route::resource('universidads', 'UniversidadAPIController');
 Route::resource('asesor_academicos', 'AsesorAcademicoAPIController');
 
 Route::resource('alumnos', 'AlumnoAPIController');
+Route::get('alumnos/verificar/{token}', 'AlumnoAPIController@verificar');
 
 Route::resource('empresas', 'EmpresaAPIController');
 

@@ -29,6 +29,7 @@ Route::resource('universidad', 'UniversidadController');
 Route::resource('asesorAcademicos', 'AsesorAcademicoController');
 
 Route::resource('alumnos', 'AlumnoController');
+Route::get('alumnos/verificar/{token}', 'AlumnoController@verificar');
 
 Route::resource('empresas', 'EmpresaController');
 

@@ -15,6 +15,9 @@ class UniversidadRepository extends BaseRepository
         'direccion',
         'telefono',
         'email',
+        'rector_titulo',
+        'rector_nombres',
+        'rector_apellidos',
         'jefe_vinculacion_titulo',
         'jefe_vinculacion_nombres',
         'jefe_vinculacion_apellidos'

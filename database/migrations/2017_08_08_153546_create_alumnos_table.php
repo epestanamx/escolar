@@ -32,6 +32,7 @@ class CreateAlumnosTable extends Migration
             $table->string('contacto_parentesco')->nullable();
             $table->string('contacto_direccion')->nullable();
             $table->string('password');
+            $table->string('token')->nullable();
             $table->boolean('activado')->nullable();
             $table->integer('idCarrera')->unsigned();
             $table->foreign('idCarrera')

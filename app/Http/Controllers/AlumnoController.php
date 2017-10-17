@@ -56,8 +56,14 @@ class AlumnoController extends AppBaseController
     public function store(CreateAlumnoRequest $request)
     {
         $input = $request->all();
+        $input['activado'] = false;
+        $input['email_oficial'] = $input['matricula'] . '@estudiantes.upqroo.edu.mx';
+        $input['password'] = $input['matricula'];
+        $input['token'] = str_random(40);
 
         $alumno = $this->alumnoRepository->create($input);
+
+        dd($alumno);
 
         Flash::success('Alumno saved successfully.');
 
@@ -151,6 +157,21 @@ class AlumnoController extends AppBaseController
         Flash::success('Alumno deleted successfully.');
 
         return redirect(route('alumnos.index'));
+    }
+
+    public function verificar($token)
+    {
+        $alumno = $this->alumnoRepository->findWhere(['token' => $token])->first();
+
+        if (empty($alumno)) {
+            return view('alumnos.expirado');
+        }
+
+        $alumno->activado = true;
+        $alumno->token = null;
+        $alumno->save();
+
+        return view('alumnos.activado');
     }
 
     public function presentacion()
