@@ -1,23 +1,23 @@
-@extends('layouts.app')
+@extends('layouts.datatables')
 
-@section('content')
-    <section class="content-header">
-        <h1 class="pull-left">Alumnos</h1>
-        <h1 class="pull-right">
-           <a class="btn btn-primary pull-right" style="margin-top: -10px;margin-bottom: 5px" href="{!! route('alumnos.create') !!}">Nuevo</a>
-        </h1>
-    </section>
-    <div class="content">
-        <div class="clearfix"></div>
-
-        @include('flash::message')
-
-        <div class="clearfix"></div>
-        <div class="box box-primary">
-            <div class="box-body">
-                    @include('alumnos.table')
-            </div>
-        </div>
-    </div>
+@section('title')
+  Alumnos
 @endsection
 
+@section('content')
+  <div class="row">
+      <div class="col-12">
+          <div class="card-box table-responsive">
+              <h4 class="m-t-0 header-title"><b>Listado de alumnos</b></h4>
+              <p class="text-muted font-13 m-b-30">
+              </p>
+
+              @include('alumnos.table')
+          </div>
+      </div>
+  </div>
+@endsection
+
+@section('boton')
+  '<a class="btn btn-labeled btn-primary" href="{{ route('alumnos.create') }}"><i class="fa fa-plus"></i> Nuevo</a>'
+@endsection

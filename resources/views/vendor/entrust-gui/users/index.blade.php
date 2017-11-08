@@ -41,7 +41,7 @@
                                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                             <a class="btn btn-warning btn-sm" href="{{ route('entrust-gui::users.edit', $model->id) }}"><span class="btn-label"><i class="fa fa-pencil"></i></span> Editar</a>
                                             @if ($model->id != 1)
-                                              <button type="submit" class="btn btn-labeled btn-danger"><span class="btn-label"><i class="fa fa-trash"></i></span> Eliminar</button>
+                                              <button type="submit" class="btn btn-labeled btn-danger btn-sm"><span class="btn-label"><i class="fa fa-trash"></i></span> Eliminar</button>
                                             @endif
                                         </form>
                                   </td>
@@ -102,7 +102,7 @@
             table.buttons().container()
                     .appendTo("#datatable_wrapper .col-md-6:eq(0)");
 
-                    $("#datatable_wrapper > div:nth-child(1) > div:nth-child(1) > div.dt-buttons.btn-group").prepend('<a class="btn btn-labeled btn-primary" href="http://vinculacion.dev/configuracion/users/create"><i class="fa fa-plus"></i> Nuevo</a>');
+                    $("#datatable_wrapper > div:nth-child(1) > div:nth-child(1) > div.dt-buttons.btn-group").prepend('<a class="btn btn-labeled btn-primary" href="{{ route('entrust-gui::users.create') }}"><i class="fa fa-plus"></i> Nuevo</a>');
         } );
 
     </script>

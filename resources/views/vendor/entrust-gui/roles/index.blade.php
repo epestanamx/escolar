@@ -102,7 +102,7 @@
             table.buttons().container()
                     .appendTo("#datatable_wrapper .col-md-6:eq(0)");
 
-                    $("#datatable_wrapper > div:nth-child(1) > div:nth-child(1) > div.dt-buttons.btn-group").prepend('<a class="btn btn-labeled btn-primary" href="http://vinculacion.dev/configuracion/roles/create"><i class="fa fa-plus"></i> Nuevo</a>');
+                    $("#datatable_wrapper > div:nth-child(1) > div:nth-child(1) > div.dt-buttons.btn-group").prepend('<a class="btn btn-labeled btn-primary" href="{{ route('entrust-gui::roles.create') }}"><i class="fa fa-plus"></i> Nuevo</a>');
         } );
 
     </script>

@@ -61,7 +61,7 @@ class SelectController extends Controller
         $term = $request->term ?: '';
         $empresa = $request->empresa ?: '';
 
-        $elementos = AsesorEmpresarial::where(function ($query) use ($term, $empresa) {;
+        $elementos = AsesorEmpresarial::where(function ($query) use ($term, $empresa) {
             $query->where('nombres', 'like', '%'.$term.'%')
                 ->orWhere('apellidos', 'like', '%'.$term.'%');
         })->where('idEmpresa', '=', $empresa)->get();

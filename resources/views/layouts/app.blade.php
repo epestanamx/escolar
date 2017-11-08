@@ -13,6 +13,7 @@
         <link rel="shortcut icon" href="{{ asset('images/favicon.ico') }}">
         <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
         <link href="{{ asset('css/icons.css') }}" rel="stylesheet" type="text/css" />
+        <link href="{{ asset('plugins/select2/select2.min.css') }}" rel="stylesheet" type="text/css" />
         <link href="{{ asset('css/style.css') }}" rel="stylesheet" type="text/css" />
     @yield('styles')
 
@@ -43,6 +44,7 @@
                 <!-- end page title end breadcrumb -->
 
                         @include('flash::message')
+                        @include('adminlte-templates::common.errors')
 
                 @yield('content')
             </div> <!-- end container -->
@@ -61,6 +63,7 @@
         <script src="{{ asset('js/jquery.slimscroll.js') }}"></script>
         <script src="{{ asset('js/jquery.scrollTo.min.js') }}"></script>
         <script src="{{ asset('js/jquery.core.js') }}"></script>
+        <script src="{{ asset('plugins/select2/select2.full.min.js') }}"></script>
         <script src="{{ asset('js/jquery.app.js') }}"></script>
         <script>
             $('div.alert').not('.alert-important').delay(3000).fadeOut(350);

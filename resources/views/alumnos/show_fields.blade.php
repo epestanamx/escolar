@@ -1,26 +1,28 @@
-{{--<!-- Id Field -->--}}
-{{--<div class="form-group">--}}
-    {{--{!! Form::label('id', 'Id:') !!}--}}
-    {{--<p>{!! $alumno->id !!}</p>--}}
-{{--</div>--}}
-
-<!-- Matricula Field -->
-<div class="form-group">
-    {!! Form::label('matricula', 'Matricula:') !!}
-    <p>{!! $alumno->matricula !!}</p>
+<div class="row">
+  <div class="col-4">
+    <!-- Matricula Field -->
+    <div class="form-group">
+        {!! Form::label('matricula', 'Matricula:') !!}
+        <p>{!! $alumno->matricula !!}</p>
+    </div>
+  </div>
+  <div class="col-4">
+    <!-- Nombres Field -->
+    <div class="form-group">
+        {!! Form::label('nombres', 'Nombres:') !!}
+        <p>{!! $alumno->nombres !!}</p>
+    </div>
+  </div>
+  <div class="col-4">
+    <!-- Apellidos Field -->
+    <div class="form-group">
+        {!! Form::label('apellidos', 'Apellidos:') !!}
+        <p>{!! $alumno->apellidos !!}</p>
+    </div>
+  </div>
 </div>
 
-<!-- Nombres Field -->
-<div class="form-group">
-    {!! Form::label('nombres', 'Nombres:') !!}
-    <p>{!! $alumno->nombres !!}</p>
-</div>
 
-<!-- Apellidos Field -->
-<div class="form-group">
-    {!! Form::label('apellidos', 'Apellidos:') !!}
-    <p>{!! $alumno->apellidos !!}</p>
-</div>
 
 <!-- Email Field -->
 <div class="form-group">
@@ -57,9 +59,3 @@
     {!! Form::label('idCarrera', 'Carrera:') !!}
     <p>{!! $alumno->carrera->nombre !!}</p>
 </div>
-
-
-<input type="hidden" {{ $proyectos = $alumno->proyectos }}>
-<h4>Proyectos</h4>
-
-@include('proyectos.table')

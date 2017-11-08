@@ -1,13 +1,12 @@
-<table class="table table-responsive" id="alumnos-table">
+<table id="datatable" class="table table-striped table-bordered dataTable no-footer" cellspacing="0" width="100%" role="grid" aria-describedby="datatable_info" style="width: 100%;">
     <thead>
         <th>Matricula</th>
         <th>Nombre</th>
-        <th>Email</th>
+        <th>Correo eléctronico</th>
         <th>Telefono</th>
-        <th>Nss</th>
         <th>Carrera</th>
         <th>Cuatrimestre</th>
-        <th colspan="3">Acciones</th>
+        <th>Acciones</th>
     </thead>
     <tbody>
     @foreach($alumnos as $alumno)
@@ -16,15 +15,14 @@
             <td>{!! $alumno->nombres . ' ' .$alumno->apellidos !!}</td>
             <td>{!! $alumno->email !!}</td>
             <td>{!! $alumno->telefono !!}</td>
-            <td>{!! $alumno->nss !!}</td>
             <td>{!! $alumno->carrera->nombre !!}</td>
             <td>{!! $alumno->cuatrimestre  . ' (' .$alumno->grupo . ')' !!}</td>
             <td>
                 {!! Form::open(['route' => ['alumnos.destroy', $alumno->id], 'method' => 'delete']) !!}
                 <div class='btn-group'>
-                    <a href="{!! route('alumnos.show', [$alumno->id]) !!}" class='btn btn-default btn-xs'><i class="glyphicon glyphicon-eye-open"></i></a>
-                    <a href="{!! route('alumnos.edit', [$alumno->id]) !!}" class='btn btn-default btn-xs'><i class="glyphicon glyphicon-edit"></i></a>
-                    {!! Form::button('<i class="glyphicon glyphicon-trash"></i>', ['type' => 'submit', 'class' => 'btn btn-danger btn-xs', 'onclick' => "return confirm('Are you sure?')"]) !!}
+                    <a href="{!! route('alumnos.show', [$alumno->id]) !!}" class='btn btn-labeled btn-success btn-sm'><i class="fa fa-eye"></i></a>
+                    <a href="{!! route('alumnos.edit', [$alumno->id]) !!}" class='btn btn-labeled btn-warning btn-sm'><i class="fa fa-pencil"></i></a>
+                    {!! Form::button('<span class="btn-label"><i class="fa fa-trash"></i></span>', ['type' => 'submit', 'class' => 'btn btn-labeled btn-danger btn-sm', 'onclick' => "return confirm('¿Desea eliminar el registro seleccionado?')"]) !!}
                 </div>
                 {!! Form::close() !!}
             </td>

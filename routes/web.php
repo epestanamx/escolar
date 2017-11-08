@@ -29,7 +29,7 @@ Route::resource('universidad', 'UniversidadController');
 Route::resource('asesorAcademicos', 'AsesorAcademicoController');
 
 Route::resource('alumnos', 'AlumnoController');
-Route::get('alumnos/verificar/{token}', 'AlumnoController@verificar');
+Route::get('alumnos/verificar/{token}', 'AlumnoController@verificar')->name('verificar');
 
 Route::resource('empresas', 'EmpresaController');
 
@@ -42,6 +42,8 @@ Route::resource('etapas', 'EtapaController');
 Route::resource('estancias', 'EstanciaController');
 
 Route::resource('estadias', 'EstadiasController');
+
+Route::resource('cartaPresentacions', 'CartaPresentacionController');
 
 
 // Selects
@@ -58,5 +60,3 @@ Route::get('alumnos/generar/presentacion', 'AlumnoController@presentacion')->nam
 Route::post('formatos/presentacion', 'PrintController@presentacion')->name('formatos.presentacion');
 Route::get('formatos/definicion/{idProyecto}', 'PrintController@definicion')->name('formatos.definicion');
 Route::get('formatos/registro/{idProyecto}', 'PrintController@registro')->name('formatos.registro');
-
-Route::resource('cartaPresentacions', 'CartaPresentacionController');

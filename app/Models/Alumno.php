@@ -81,7 +81,10 @@ class Alumno extends Model
      * @var array
      */
     public static $rules = [
-      'matricula' => 'required|unique:alumnos'
+      'matricula' => 'required',
+      'nombres' => 'required',
+      'apellidos' => 'required',
+      'idCarrera' => 'required'
     ];
 
     protected $hidden = [

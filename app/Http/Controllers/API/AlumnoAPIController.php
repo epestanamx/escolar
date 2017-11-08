@@ -4,10 +4,12 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Requests\API\CreateAlumnoAPIRequest;
 use App\Http\Requests\API\UpdateAlumnoAPIRequest;
+use App\Mail\AlumnoActivacion;
 use App\Models\Alumno;
 use App\Repositories\AlumnoRepository;
 use Illuminate\Http\Request;
 use App\Http\Controllers\AppBaseController;
+use Illuminate\Support\Facades\Mail;
 use InfyOm\Generator\Criteria\LimitOffsetCriteria;
 use Prettus\Repository\Criteria\RequestCriteria;
 use Response;
@@ -144,5 +146,26 @@ class AlumnoAPIController extends AppBaseController
         $alumno->save();
 
         return $this->sendResponse($id, 'Alumno activado de forma correcta.');
+    }
+
+    public function login(Request $request)
+    {
+        $email = $request->email_oficial ?: '';
+        $password = $request->password ?: '';
+
+        $alumno = Alumno::where(function ($query) use ($email, $password) {
+            $query->where('email_oficial', $email);
+        })->where('password', '=', $password)->first();
+
+        if (!isset($alumno)) {
+          return $this->sendError('Correo eléctronico o contrañsea incorrectos.');
+        }
+
+        if($alumno->activado == true) {
+          return $this->sendResponse($alumno, 'Inicio de sesión correcto');
+        } else {
+          Mail::to($alumno->email_oficial)->send(new AlumnoActivacion($alumno));
+          return $this->sendError('Alumno no activo en el sistema, se ha enviado un correo eléctronico de actiación al email institucional.');
+        }
     }
 }

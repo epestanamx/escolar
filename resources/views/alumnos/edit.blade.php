@@ -1,25 +1,32 @@
 @extends('layouts.app')
 
+@section('title', 'Alumnos')
+
 @section('content')
-    <section class="content-header">
-        <h1>
-            Alumno
-        </h1>
-   </section>
-   <div class="content">
-       @include('adminlte-templates::common.errors')
-       <div class="box box-primary">
-           <div class="box-body">
-               <div class="row">
-                   {!! Form::model($alumno, ['route' => ['alumnos.update', $alumno->id], 'method' => 'patch']) !!}
+    <div class="row">
+        <div class="col-12">
+            <div class="card-box">
+                <h4 class="m-t-0 header-title"><b>Modificar alumno</b></h4>
+                <p class="text-muted m-b-30 font-14">
+                </p>
 
-                        @include('alumnos.fields')
+                <div class="row">
+                    <div class="col-12">
+                        <div class="p-20">
+                          {!! Form::model($alumno, ['route' => ['alumnos.update', $alumno->id], 'method' => 'patch']) !!}
 
-                   {!! Form::close() !!}
-               </div>
-           </div>
-       </div>
-   </div>
+                               @include('alumnos.fields')
+
+                          {!! Form::close() !!}
+                        </div>
+                    </div>
+
+                </div>
+                <!-- end row -->
+            </div> <!-- end card-box -->
+        </div><!-- end col -->
+    </div>
+    <!-- end row -->
 @endsection
 
 @section('scripts')

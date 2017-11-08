@@ -63,8 +63,6 @@ class AlumnoController extends AppBaseController
 
         $alumno = $this->alumnoRepository->create($input);
 
-        dd($alumno);
-
         Flash::success('Alumno saved successfully.');
 
         return redirect(route('alumnos.index'));
