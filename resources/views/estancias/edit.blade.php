@@ -1,25 +1,32 @@
 @extends('layouts.app')
 
+@section('title', 'Estancia')
+
 @section('content')
-    <section class="content-header">
-        <h1>
-            Estancia
-        </h1>
-   </section>
-   <div class="content">
-       @include('adminlte-templates::common.errors')
-       <div class="box box-primary">
-           <div class="box-body">
-               <div class="row">
-                   {!! Form::model($estancia, ['route' => ['estancias.update', $estancia->id], 'method' => 'patch']) !!}
+    <div class="row">
+        <div class="col-12">
+            <div class="card-box">
+                <h4 class="m-t-0 header-title"><b>Modificar estancia</b></h4>
+                <p class="text-muted m-b-30 font-14">
+                </p>
 
-                        @include('estancias.fields')
+                <div class="row">
+                    <div class="col-12">
+                        <div class="p-20">
+                          {!! Form::model($estancia, ['route' => ['estancias.update', $estancia->id], 'method' => 'patch']) !!}
 
-                   {!! Form::close() !!}
-               </div>
-           </div>
-       </div>
-   </div>
+                               @include('estancias.fields')
+
+                          {!! Form::close() !!}
+                        </div>
+                    </div>
+
+                </div>
+                <!-- end row -->
+            </div> <!-- end card-box -->
+        </div><!-- end col -->
+    </div>
+    <!-- end row -->
 @endsection
 
 @section('scripts')

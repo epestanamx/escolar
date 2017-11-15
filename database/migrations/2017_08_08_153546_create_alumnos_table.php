@@ -23,6 +23,7 @@ class CreateAlumnosTable extends Migration
             $table->string('telefono')->nullable();
             $table->string('nss')->nullable();
             $table->string('curp')->nullable();
+            $table->string('sexo')->nullable();
             $table->string('cuatrimestre')->nullable();
             $table->string('grupo')->nullable();
             $table->string('tipo_sangre')->nullable();

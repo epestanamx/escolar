@@ -62,6 +62,7 @@ class Alumno extends Model
         'telefono' => 'string',
         'nss' => 'string',
         'curp' => 'string',
+        'sexo' => 'string',
         'cuatrimestre' => 'string',
         'grupo' => 'string',
         'idCarrera' => 'integer',

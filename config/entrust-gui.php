@@ -3,9 +3,9 @@ return [
     "layout" => "entrust-gui::app",
     "route-prefix" => "admin",
     "pagination" => [
-        "users" => 5,
-        "roles" => 5,
-        "permissions" => 5,
+        "users" => 100000,
+        "roles" => 100000,
+        "permissions" => 100000,
     ],
     // "middleware" => ['web', 'entrust-gui.admin'],
     "middleware" => ['web'],

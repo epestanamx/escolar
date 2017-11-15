@@ -100,6 +100,6 @@
     {{--<p>{!! $proyecto->deleted_at !!}</p>--}}
 {{--</div>--}}
 
-
+<h4>Etapas del proyecto</h4>
 <input type="hidden" {{ $etapas = $proyecto->etapas }}>
 @include('etapas.table')

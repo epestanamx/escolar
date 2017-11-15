@@ -1,23 +1,33 @@
 @extends('layouts.app')
 
+@section('title', 'Asesores academicos')
+
 @section('content')
-    <section class="content-header">
-        <h1>
-            Asesor Academico
-        </h1>
-   </section>
-   <div class="content">
-       @include('adminlte-templates::common.errors')
-       <div class="box box-primary">
-           <div class="box-body">
-               <div class="row">
-                   {!! Form::model($asesorAcademico, ['route' => ['asesorAcademicos.update', $asesorAcademico->id], 'method' => 'patch']) !!}
+    <div class="row">
+        <div class="col-12">
+            <div class="card-box">
+                <h4 class="m-t-0 header-title"><b>Modificar asesor academico</b></h4>
+                <p class="text-muted m-b-30 font-14">
+                </p>
 
-                        @include('asesor_academicos.fields')
+                <div class="row">
+                    <div class="col-12">
+                        <div class="p-20">
+                          {!! Form::model($asesorAcademico, ['route' => ['asesorAcademicos.update', $asesorAcademico->id], 'method' => 'patch']) !!}
 
-                   {!! Form::close() !!}
-               </div>
-           </div>
-       </div>
-   </div>
+                               @include('asesor_academicos.fields')
+
+                          {!! Form::close() !!}
+                        </div>
+                    </div>
+
+                </div>
+                <!-- end row -->
+            </div> <!-- end card-box -->
+        </div><!-- end col -->
+    </div>
+    <!-- end row -->
+@endsection
+
+@section('scripts')
 @endsection

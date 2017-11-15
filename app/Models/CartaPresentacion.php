@@ -62,5 +62,18 @@ class CartaPresentacion extends Model
         'horas' => 'required'
     ];
 
+    public function alumno()
+    {
+        return $this->belongsTo(\App\Models\Alumno::class, 'idAlumno', 'id');
+    }
 
+    public function periodo()
+    {
+        return $this->belongsTo(\App\Models\Periodo::class, 'idPeriodo', 'id');
+    }
+
+    public function empresa()
+    {
+        return $this->belongsTo(\App\Models\Empresa::class, 'idEmpresa', 'id');
+    }
 }

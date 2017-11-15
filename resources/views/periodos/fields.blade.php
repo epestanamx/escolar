@@ -1,28 +1,31 @@
-<!-- Fecha Inicio Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('fecha_inicio', 'Inicio:') !!}
-    {!! Form::text('fecha_inicio', null, ['class' => 'form-control']) !!}
-</div>
-
-<!-- Fecha Fin Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('fecha_fin', 'Fin:') !!}
-    {!! Form::text('fecha_fin', null, ['class' => 'form-control']) !!}
+<div class="row">
+  <div class="col-6">
+    <!-- Fecha Inicio Field -->
+    <div class="form-group">
+        {!! Form::label('fecha_inicio', 'Inicio:') !!}
+        {!! Form::text('fecha_inicio', null, ['class' => 'form-control']) !!}
+    </div>
+  </div>
+  <div class="col-6">
+    <!-- Fecha Fin Field -->
+    <div class="form-group">
+        {!! Form::label('fecha_fin', 'Fin:') !!}
+        {!! Form::text('fecha_fin', null, ['class' => 'form-control']) !!}
+    </div>
+  </div>
 </div>
 
 <!-- Activo Field -->
-<div class="form-group col-sm-6">
+<div class="form-group row col-6">
     {!! Form::label('activo', 'Estado:') !!}
-    <label class="checkbox-inline">
-        <select name="activo" id="activo">
-            <option value="1" selected>Activo</option>
-            <option value="0">Desactivado</option>
-        </select>
-    </label>
+    <select name="activo" id="activo" class="form-control">
+        <option value="1" selected>Activo</option>
+        <option value="0">Desactivado</option>
+    </select>
 </div>
 
 <!-- Submit Field -->
 <div class="form-group col-sm-12">
-    {!! Form::submit('Guardar', ['class' => 'btn btn-primary']) !!}
-    <a href="{!! route('periodos.index') !!}" class="btn btn-default">Cancelar</a>
+    <button type="submit" id="create" class="btn btn-labeled btn-primary"><i class="fa fa-plus"></i> Guardar</button>
+    <a class="btn btn-danger" href="{{ route('periodos.index') }}"><i class="fa fa-chevron-left"></i> Cancelar</a>
 </div>

@@ -7,7 +7,7 @@
         @page {
             size: letter;
         }
-        
+
         body {
             font-family: sans-serif;
             position: relative;
@@ -66,7 +66,7 @@
         Dirección de Vinculación, Difusión y Extensión Universitaria
     </p>
     <p>
-        Asunto: Carta de Presentación para programa de {{ $tipo }}
+        Asunto: Carta de Presentación para programa de {{ $carta->tipo }}
         <br>
         Cancún, Quintana Roo, ({{ \Carbon\Carbon::now()->format('d/m/Y') }}).
     </p>
@@ -74,25 +74,25 @@
 <div id="cuerpo">
     <div id="presente">
         <p>
-            {{ $empresa->titulo . ' ' . $empresa->responsable_rh }}
+            {{ $carta->empresa->titulo . ' ' . $carta->empresa->responsable_rh }}
             <br>
             Jefe de recursos humanos
             <br>
-            {{ $empresa->nombre }}
+            {{ $carta->empresa->nombre }}
             <br>
             P R E S E N T E
         </p>
     </div>
     <div id="contenido">
         <p>
-            Reciba por este medio un cordial saludo, el motivo de esta carta es  presentarle a <b>{{ $alumno->nombres . ' ' . $alumno->apellidos }}</b>,
-            quien es alumno regular de la Universidad Politécnica de Quintana Roo, con número de matrícula <b>{{ $alumno->matricula }}</b>,
-            quien durante el periodo <b>{{ $periodo->fecha_inicio . ' - ' . $periodo->fecha_fin }}</b>, cursa el <b>{{ $alumno->cuatrimestre }}°</b> cuatrimestre de estudios del Programa Educativo
-            de <b>{{ $alumno->carrera->nombre }}</b>.
+            Reciba por este medio un cordial saludo, el motivo de esta carta es  presentarle a <b>{{ $carta->alumno->nombres . ' ' . $carta->alumno->apellidos }}</b>,
+            quien es alumno regular de la Universidad Politécnica de Quintana Roo, con número de matrícula <b>{{ $carta->alumno->matricula }}</b>,
+            quien durante el periodo <b>{{ $carta->periodo->fecha_inicio . ' - ' . $carta->periodo->fecha_fin }}</b>, cursa el <b>{{ $carta->alumno->cuatrimestre }}°</b> cuatrimestre de estudios del Programa Educativo
+            de <b>{{ $carta->alumno->carrera->nombre }}</b>.
             <br>
             <br>
             <br>
-            De igual forma solicito a usted,  atentamente su anuencia a fin de que al estudiante antes citado  se le permita realizar en ese prestigiado organismo su programa de Estancia reglamentaria, misma que comprende un total de <b>{{ $horas }}</b>, horas y cuyo objetivo es que el alumno realice actividades de práctica en el campo laboral, vinculadas a las competencias adquiridas durante el ciclo de formación previo al programa, así como el desarrollo de un proyecto acorde  a los requerimientos de su  empresa o institución.
+            De igual forma solicito a usted,  atentamente su anuencia a fin de que al estudiante antes citado  se le permita realizar en ese prestigiado organismo su programa de Estancia reglamentaria, misma que comprende un total de <b>{{ $carta->horas }}</b>, horas y cuyo objetivo es que el alumno realice actividades de práctica en el campo laboral, vinculadas a las competencias adquiridas durante el ciclo de formación previo al programa, así como el desarrollo de un proyecto acorde  a los requerimientos de su  empresa o institución.
             <br>
             <br>
             <br>
@@ -103,7 +103,6 @@
         <p>
             <b>
                 ATENTAMENTE
-                <br>
                 <br>
                 <br>
                 <br>

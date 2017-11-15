@@ -8,21 +8,18 @@ use App\Models\Etapa;
 use App\Models\Periodo;
 use App\Models\Proyecto;
 use App\Models\Universidad;
+use App\Models\CartaPresentacion;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 
 class PrintController extends Controller
 {
-    public function presentacion(Request $request)
+    public function presentacion($id)
     {
-        $alumno = Alumno::find($request->idAlumno);
-        $empresa = Empresa::find($request->idEmpresa);
-        $horas = $request->horas;
-        $periodo = Periodo::find($request->idPeriodo);
-        $tipo = $request->tipo;
+        $carta = CartaPresentacion::find($id);
         $universidad = Universidad::find(1);
 
-        $view =  \View::make('formatos.presentacion', compact('alumno', 'empresa', 'horas', 'periodo','tipo', 'universidad'))->render();
+        $view =  \View::make('formatos.presentacion', compact('carta', 'universidad'))->render();
         $pdf = \App::make('snappy.pdf.wrapper');
         $pdf->loadHTML($view)
             ->setOption('margin-top', '3mm')

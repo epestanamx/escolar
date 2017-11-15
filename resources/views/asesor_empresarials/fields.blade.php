@@ -1,47 +1,62 @@
-<!-- Titulo Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('titulo', 'Titulo:') !!}
-    {!! Form::text('titulo', null, ['class' => 'form-control']) !!}
+<div class="row">
+  <div class="col-2">
+    <!-- Titulo Field -->
+    <div class="form-group">
+        {!! Form::label('titulo', 'Titulo:') !!}
+        {!! Form::text('titulo', null, ['class' => 'form-control']) !!}
+    </div>
+  </div>
+  <div class="col-5">
+    <!-- Nombres Field -->
+    <div class="form-group">
+        {!! Form::label('nombres', 'Nombres:') !!}
+        {!! Form::text('nombres', null, ['class' => 'form-control']) !!}
+    </div>
+  </div>
+  <div class="col-5">
+    <!-- Apellidos Field -->
+    <div class="form-group">
+        {!! Form::label('apellidos', 'Apellidos:') !!}
+        {!! Form::text('apellidos', null, ['class' => 'form-control']) !!}
+    </div>
+  </div>
 </div>
 
-<!-- Nombres Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('nombres', 'Nombres:') !!}
-    {!! Form::text('nombres', null, ['class' => 'form-control']) !!}
+<div class="row">
+  <div class="col-6">
+    <!-- Email Field -->
+    <div class="form-group">
+        {!! Form::label('email', 'Email:') !!}
+        {!! Form::email('email', null, ['class' => 'form-control']) !!}
+    </div>
+  </div>
+  <div class="col-6">
+    <!-- Telefono Field -->
+    <div class="form-group">
+        {!! Form::label('telefono', 'Telefono:') !!}
+        {!! Form::text('telefono', null, ['class' => 'form-control']) !!}
+    </div>
+  </div>
 </div>
 
-<!-- Apellidos Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('apellidos', 'Apellidos:') !!}
-    {!! Form::text('apellidos', null, ['class' => 'form-control']) !!}
-</div>
-
-<!-- Email Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('email', 'Email:') !!}
-    {!! Form::email('email', null, ['class' => 'form-control']) !!}
-</div>
-
-<!-- Telefono Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('telefono', 'Telefono:') !!}
-    {!! Form::text('telefono', null, ['class' => 'form-control']) !!}
-</div>
-
-{{--<!-- Idempresa Field -->--}}
-{{--<div class="form-group col-sm-6">--}}
-    {{--{!! Form::label('idEmpresa', 'Idempresa:') !!}--}}
-    {{--{!! Form::number('idEmpresa', null, ['class' => 'form-control']) !!}--}}
-{{--</div>--}}
-<!-- Empresa Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('idEmpresa', 'Empresa:') !!}
-    <select name="idEmpresa" id="idEmpresa" class="form-control">
-    </select>
+<div class="row">
+  <div class="col-12">
+    <!-- Empresa Field -->
+    <div class="form-group">
+        {!! Form::label('idEmpresa', 'Empresa:') !!}
+        <select name="idEmpresa" id="idEmpresa" class="form-control">
+          @isset($asesorEmpresarial)
+            @if ($asesorEmpresarial->idEmpresa != null)
+              <option value="{{ $asesorEmpresarial->empresa->id }}">{{ $asesorEmpresarial->empresa->nombre }}</option>
+            @endif
+          @endisset
+        </select>
+    </div>
+  </div>
 </div>
 
 <!-- Submit Field -->
 <div class="form-group col-sm-12">
-    {!! Form::submit('Guardar', ['class' => 'btn btn-primary']) !!}
-    <a href="{!! route('asesorEmpresarials.index') !!}" class="btn btn-default">Cancelar</a>
+    <button type="submit" id="create" class="btn btn-labeled btn-primary"><i class="fa fa-plus"></i> Guardar</button>
+    <a class="btn btn-danger" href="{{ route('asesorEmpresarials.index') }}"><i class="fa fa-chevron-left"></i> Cancelar</a>
 </div>
