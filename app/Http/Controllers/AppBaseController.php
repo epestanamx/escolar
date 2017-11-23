@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use Entrust;
+use Flash;
+use Illuminate\Support\Facades\Redirect;
 use InfyOm\Generator\Utils\ResponseUtil;
 use Response;
 
@@ -26,5 +29,12 @@ class AppBaseController extends Controller
     public function sendError($error, $code = 404)
     {
         return Response::json(ResponseUtil::makeError($error), $code);
+    }
+
+    public function verificarPermiso($permiso)
+    {
+        if (!Entrust::can($permiso)) {
+            abort(403, 'Unauthorized action.');
+        }
     }
 }

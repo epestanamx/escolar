@@ -12,10 +12,10 @@
           <td>{!! $asesorAcademico->email !!}</td>
           <td>{!! $asesorAcademico->telefono !!}</td>
             <td>
-                {!! Form::open(['route' => ['asesorAcademicos.destroy', $asesorAcademico->id], 'method' => 'delete']) !!}
+                {!! Form::open(['route' => ['asesores-academicos.destroy', $asesorAcademico->id], 'method' => 'delete']) !!}
                 <div class='btn-group'>
-                    <a href="{!! route('asesorAcademicos.show', [$asesorAcademico->id]) !!}" class='btn btn-labeled btn-success btn-sm'><i class="fa fa-eye"></i></a>
-                    <a href="{!! route('asesorAcademicos.edit', [$asesorAcademico->id]) !!}" class='btn btn-labeled btn-warning btn-sm'><i class="fa fa-pencil"></i></a>
+                    <a href="{!! route('asesores-academicos.show', [$asesorAcademico->id]) !!}" class='btn btn-labeled btn-success btn-sm'><i class="fa fa-eye"></i></a>
+                    <a href="{!! route('asesores-academicos.edit', [$asesorAcademico->id]) !!}" class='btn btn-labeled btn-warning btn-sm'><i class="fa fa-pencil"></i></a>
                     {!! Form::button('<span class="btn-label"><i class="fa fa-trash"></i></span>', ['type' => 'submit', 'class' => 'btn btn-labeled btn-danger btn-sm', 'onclick' => "return confirm('¿Desea eliminar el registro seleccionado?')"]) !!}
                 </div>
                 {!! Form::close() !!}

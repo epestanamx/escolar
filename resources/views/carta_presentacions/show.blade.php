@@ -13,7 +13,7 @@
                 <div class="row">
                     <div class="col-12">
                       @include('carta_presentacions.show_fields')
-                      <a href="{!! route('cartaPresentacions.index') !!}" class="btn btn-success"><i class="fa fa-chevron-left"></i> Regresar</a>
+                      <a href="{!! route('cartas-presentacion.index') !!}" class="btn btn-success"><i class="fa fa-chevron-left"></i> Regresar</a>
                     </div>
 
                 </div>

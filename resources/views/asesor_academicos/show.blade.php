@@ -13,7 +13,7 @@
                 <div class="row">
                     <div class="col-12">
                       @include('asesor_academicos.show_fields')
-                      <a href="{!! route('asesorAcademicos.index') !!}" class="btn btn-success"><i class="fa fa-chevron-left"></i> Regresar</a>
+                      <a href="{!! route('asesores-academicos.index') !!}" class="btn btn-success"><i class="fa fa-chevron-left"></i> Regresar</a>
                     </div>
 
                 </div>

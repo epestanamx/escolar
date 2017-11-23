@@ -13,7 +13,7 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="p-20">
-                          {!! Form::open(['route' => 'cartaPresentacions.store']) !!}
+                          {!! Form::open(['route' => 'cartas-presentacion.store']) !!}
 
                               @include('carta_presentacions.fields')
 

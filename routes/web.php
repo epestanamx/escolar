@@ -1,50 +1,31 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
 Route::get('/', function () {
   return redirect('home');
 });
 
+Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
+Route::post('login', 'Auth\LoginController@login');
 
-Auth::routes();
+Route::group(['middleware' => 'auth'], function () {
+    Route::post('logout', 'Auth\LoginController@logout')->name('logout');
+    Route::get('/home', 'HomeController@index');
+    Route::resource('periodos', 'PeriodoController');
+    Route::resource('carreras', 'CarreraController');
+    Route::resource('universidad', 'UniversidadController');
+    Route::resource('asesores-academicos', 'AsesorAcademicoController');
+    Route::resource('alumnos', 'AlumnoController');
+    Route::resource('empresas', 'EmpresaController');
+    Route::resource('asesores-empresariales', 'AsesorEmpresarialController');
+    Route::resource('proyectos', 'ProyectoController');
+    Route::resource('etapas', 'EtapaController');
+    Route::resource('estancias', 'EstanciaController');
+    Route::resource('estadias', 'EstadiasController');
+    Route::resource('cartas-presentacion', 'CartaPresentacionController');
+    Route::resource('credenciales', 'CredencialController');
+});
 
-Route::get('/home', 'HomeController@index');
-
-Route::resource('periodos', 'PeriodoController');
-
-Route::resource('carreras', 'CarreraController');
-
-Route::resource('universidad', 'UniversidadController');
-
-Route::resource('asesorAcademicos', 'AsesorAcademicoController');
-
-Route::resource('alumnos', 'AlumnoController');
 Route::get('alumnos/verificar/{token}', 'AlumnoController@verificar')->name('verificar');
-
-Route::resource('empresas', 'EmpresaController');
-
-Route::resource('asesorEmpresarials', 'AsesorEmpresarialController');
-
-Route::resource('proyectos', 'ProyectoController');
-
-Route::resource('etapas', 'EtapaController');
-
-Route::resource('estancias', 'EstanciaController');
-
-Route::resource('estadias', 'EstadiasController');
-
-Route::resource('cartaPresentacions', 'CartaPresentacionController');
-
 
 // Selects
 Route::get('selects/carreras', 'SelectController@carreras');

@@ -13,7 +13,7 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="p-20">
-                          {!! Form::open(['route' => 'asesorAcademicos.store']) !!}
+                          {!! Form::open(['route' => 'asesores-academicos.store']) !!}
 
                               @include('asesor_academicos.fields')
 

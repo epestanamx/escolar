@@ -42,7 +42,6 @@
                     </div>
                 </div>
                 <!-- end page title end breadcrumb -->
-
                         @include('flash::message')
                         @include('adminlte-templates::common.errors')
 

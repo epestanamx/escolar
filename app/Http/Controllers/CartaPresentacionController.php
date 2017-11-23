@@ -4,10 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\CreateCartaPresentacionRequest;
 use App\Http\Requests\UpdateCartaPresentacionRequest;
+use App\Mail\CartaPresentacionCreacion;
 use App\Repositories\CartaPresentacionRepository;
 use App\Http\Controllers\AppBaseController;
 use Illuminate\Http\Request;
 use Flash;
+use Illuminate\Support\Facades\Mail;
 use Prettus\Repository\Criteria\RequestCriteria;
 use Response;
 
@@ -59,9 +61,11 @@ class CartaPresentacionController extends AppBaseController
 
         $cartaPresentacion = $this->cartaPresentacionRepository->create($input);
 
+        Mail::to($cartaPresentacion->alumno->email_oficial)->send(new CartaPresentacionCreacion($cartaPresentacion));
+
         Flash::success('Carta Presentacion saved successfully.');
 
-        return redirect(route('cartaPresentacions.index'));
+        return redirect(route('cartas-presentacion.index'));
     }
 
     /**
@@ -78,7 +82,7 @@ class CartaPresentacionController extends AppBaseController
         if (empty($cartaPresentacion)) {
             Flash::error('Carta Presentacion not found');
 
-            return redirect(route('cartaPresentacions.index'));
+            return redirect(route('cartas-presentacion.index'));
         }
 
         return view('carta_presentacions.show')->with('cartaPresentacion', $cartaPresentacion);
@@ -98,7 +102,7 @@ class CartaPresentacionController extends AppBaseController
         if (empty($cartaPresentacion)) {
             Flash::error('Carta Presentacion not found');
 
-            return redirect(route('cartaPresentacions.index'));
+            return redirect(route('cartas-presentacion.index'));
         }
 
         return view('carta_presentacions.edit')->with('cartaPresentacion', $cartaPresentacion);
@@ -119,14 +123,14 @@ class CartaPresentacionController extends AppBaseController
         if (empty($cartaPresentacion)) {
             Flash::error('Carta Presentacion not found');
 
-            return redirect(route('cartaPresentacions.index'));
+            return redirect(route('cartas-presentacion.index'));
         }
 
         $cartaPresentacion = $this->cartaPresentacionRepository->update($request->all(), $id);
 
         Flash::success('Carta Presentacion updated successfully.');
 
-        return redirect(route('cartaPresentacions.index'));
+        return redirect(route('cartas-presentacion.index'));
     }
 
     /**
@@ -143,13 +147,13 @@ class CartaPresentacionController extends AppBaseController
         if (empty($cartaPresentacion)) {
             Flash::error('Carta Presentacion not found');
 
-            return redirect(route('cartaPresentacions.index'));
+            return redirect(route('cartas-presentacion.index'));
         }
 
         $this->cartaPresentacionRepository->delete($id);
 
         Flash::success('Carta Presentacion deleted successfully.');
 
-        return redirect(route('cartaPresentacions.index'));
+        return redirect(route('cartas-presentacion.index'));
     }
 }

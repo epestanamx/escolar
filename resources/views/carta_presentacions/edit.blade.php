@@ -13,7 +13,7 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="p-20">
-                          {!! Form::model($cartaPresentacion, ['route' => ['cartaPresentacions.update', $cartaPresentacion->id], 'method' => 'patch']) !!}
+                          {!! Form::model($cartaPresentacion, ['route' => ['cartas-presentacion.update', $cartaPresentacion->id], 'method' => 'patch']) !!}
 
                                @include('carta_presentacions.fields')
 

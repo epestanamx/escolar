@@ -61,7 +61,7 @@ class AsesorAcademicoController extends AppBaseController
 
         Flash::success('Asesor Academico saved successfully.');
 
-        return redirect(route('asesorAcademicos.index'));
+        return redirect(route('asesores-academicos.index'));
     }
 
     /**
@@ -78,7 +78,7 @@ class AsesorAcademicoController extends AppBaseController
         if (empty($asesorAcademico)) {
             Flash::error('Asesor Academico not found');
 
-            return redirect(route('asesorAcademicos.index'));
+            return redirect(route('asesores-academicos.index'));
         }
 
         return view('asesor_academicos.show')->with('asesorAcademico', $asesorAcademico);
@@ -98,7 +98,7 @@ class AsesorAcademicoController extends AppBaseController
         if (empty($asesorAcademico)) {
             Flash::error('Asesor Academico not found');
 
-            return redirect(route('asesorAcademicos.index'));
+            return redirect(route('asesores-academicos.index'));
         }
 
         return view('asesor_academicos.edit')->with('asesorAcademico', $asesorAcademico);
@@ -119,14 +119,14 @@ class AsesorAcademicoController extends AppBaseController
         if (empty($asesorAcademico)) {
             Flash::error('Asesor Academico not found');
 
-            return redirect(route('asesorAcademicos.index'));
+            return redirect(route('asesores-academicos.index'));
         }
 
         $asesorAcademico = $this->asesorAcademicoRepository->update($request->all(), $id);
 
         Flash::success('Asesor Academico updated successfully.');
 
-        return redirect(route('asesorAcademicos.index'));
+        return redirect(route('asesores-academicos.index'));
     }
 
     /**
@@ -143,13 +143,13 @@ class AsesorAcademicoController extends AppBaseController
         if (empty($asesorAcademico)) {
             Flash::error('Asesor Academico not found');
 
-            return redirect(route('asesorAcademicos.index'));
+            return redirect(route('asesores-academicos.index'));
         }
 
         $this->asesorAcademicoRepository->delete($id);
 
         Flash::success('Asesor Academico deleted successfully.');
 
-        return redirect(route('asesorAcademicos.index'));
+        return redirect(route('asesores-academicos.index'));
     }
 }

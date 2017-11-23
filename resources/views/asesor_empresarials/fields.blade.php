@@ -58,5 +58,5 @@
 <!-- Submit Field -->
 <div class="form-group col-sm-12">
     <button type="submit" id="create" class="btn btn-labeled btn-primary"><i class="fa fa-plus"></i> Guardar</button>
-    <a class="btn btn-danger" href="{{ route('asesorEmpresarials.index') }}"><i class="fa fa-chevron-left"></i> Cancelar</a>
+    <a class="btn btn-danger" href="{{ route('asesores-empresariales.index') }}"><i class="fa fa-chevron-left"></i> Cancelar</a>
 </div>

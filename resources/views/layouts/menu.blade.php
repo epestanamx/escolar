@@ -65,3 +65,7 @@
     <a href="{!! route('cartaPresentacions.index') !!}"><i class="fa fa-edit"></i><span>CartaPresentacions</span></a>
 </li>
 
+<li class="{{ Request::is('credencials*') ? 'active' : '' }}">
+    <a href="{!! route('credencials.index') !!}"><i class="fa fa-edit"></i><span>Credencials</span></a>
+</li>
+

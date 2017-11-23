@@ -4,10 +4,12 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Requests\API\CreateCartaPresentacionAPIRequest;
 use App\Http\Requests\API\UpdateCartaPresentacionAPIRequest;
+use App\Mail\CartaPresentacionCreacion;
 use App\Models\CartaPresentacion;
 use App\Repositories\CartaPresentacionRepository;
 use Illuminate\Http\Request;
 use App\Http\Controllers\AppBaseController;
+use Illuminate\Support\Facades\Mail;
 use InfyOm\Generator\Criteria\LimitOffsetCriteria;
 use Prettus\Repository\Criteria\RequestCriteria;
 use Response;
@@ -55,9 +57,11 @@ class CartaPresentacionAPIController extends AppBaseController
     {
         $input = $request->all();
 
-        $cartaPresentacions = $this->cartaPresentacionRepository->create($input);
+        $cartaPresentacion = $this->cartaPresentacionRepository->create($input);
 
-        return $this->sendResponse($cartaPresentacions->toArray(), 'Carta Presentacion saved successfully');
+        Mail::to($cartaPresentacion->alumno->email_oficial)->send(new CartaPresentacionCreacion($cartaPresentacion));
+
+        return $this->sendResponse($cartaPresentacion->toArray(), 'Carta Presentacion saved successfully');
     }
 
     /**

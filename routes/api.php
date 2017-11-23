@@ -43,3 +43,6 @@ Route::resource('estancias', 'EstanciaAPIController');
 Route::resource('estadias', 'EstadiasAPIController');
 
 Route::resource('carta_presentacions', 'CartaPresentacionAPIController');
+
+
+Route::resource('credencials', 'CredencialAPIController');

@@ -4,10 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\CreateEstadiasRequest;
 use App\Http\Requests\UpdateEstadiasRequest;
+use App\Mail\EstadiaRegistro;
 use App\Repositories\EstadiasRepository;
 use App\Http\Controllers\AppBaseController;
 use Illuminate\Http\Request;
 use Flash;
+use Illuminate\Support\Facades\Mail;
 use Prettus\Repository\Criteria\RequestCriteria;
 use Response;
 
@@ -60,6 +62,8 @@ class EstadiasController extends AppBaseController
         $estadias = $this->estadiasRepository->create($input);
 
         Flash::success('Estadias saved successfully.');
+
+        Mail::to($estadias->alumno->email_oficial)->send(new EstadiaRegistro($estadias));
 
         return redirect(route('estadias.index'));
     }

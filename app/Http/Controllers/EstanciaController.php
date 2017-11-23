@@ -4,10 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\CreateEstanciaRequest;
 use App\Http\Requests\UpdateEstanciaRequest;
+use App\Mail\EstanciaRegistro;
 use App\Repositories\EstanciaRepository;
 use App\Http\Controllers\AppBaseController;
 use Illuminate\Http\Request;
 use Flash;
+use Illuminate\Support\Facades\Mail;
 use Prettus\Repository\Criteria\RequestCriteria;
 use Response;
 
@@ -58,6 +60,8 @@ class EstanciaController extends AppBaseController
         $input = $request->all();
 
         $estancia = $this->estanciaRepository->create($input);
+
+        Mail::to($estadias->alumno->email_oficial)->send(new EstanciaRegistro($estadias));
 
         Flash::success('Estancia saved successfully.');
 

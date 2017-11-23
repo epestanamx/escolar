@@ -4,10 +4,12 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Requests\API\CreateEstadiasAPIRequest;
 use App\Http\Requests\API\UpdateEstadiasAPIRequest;
+use App\Mail\EstadiaRegistro;
 use App\Models\Estadias;
 use App\Repositories\EstadiasRepository;
 use Illuminate\Http\Request;
 use App\Http\Controllers\AppBaseController;
+use Illuminate\Support\Facades\Mail;
 use InfyOm\Generator\Criteria\LimitOffsetCriteria;
 use Prettus\Repository\Criteria\RequestCriteria;
 use Response;
@@ -56,6 +58,8 @@ class EstadiasAPIController extends AppBaseController
         $input = $request->all();
 
         $estadias = $this->estadiasRepository->create($input);
+
+        Mail::to($estadias->alumno->email_oficial)->send(new EstadiaRegistro($estadias));
 
         return $this->sendResponse($estadias->toArray(), 'Estadias saved successfully');
     }

@@ -4,10 +4,12 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Requests\API\CreateEstanciaAPIRequest;
 use App\Http\Requests\API\UpdateEstanciaAPIRequest;
+use App\Mail\EstanciaRegistro;
 use App\Models\Estancia;
 use App\Repositories\EstanciaRepository;
 use Illuminate\Http\Request;
 use App\Http\Controllers\AppBaseController;
+use Illuminate\Support\Facades\Mail;
 use InfyOm\Generator\Criteria\LimitOffsetCriteria;
 use Prettus\Repository\Criteria\RequestCriteria;
 use Response;
@@ -56,6 +58,8 @@ class EstanciaAPIController extends AppBaseController
         $input = $request->all();
 
         $estancias = $this->estanciaRepository->create($input);
+
+        Mail::to($estadias->alumno->email_oficial)->send(new EstanciaRegistro($estadias));
 
         return $this->sendResponse($estancias->toArray(), 'Estancia saved successfully');
     }

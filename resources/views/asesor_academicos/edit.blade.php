@@ -13,7 +13,7 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="p-20">
-                          {!! Form::model($asesorAcademico, ['route' => ['asesorAcademicos.update', $asesorAcademico->id], 'method' => 'patch']) !!}
+                          {!! Form::model($asesorAcademico, ['route' => ['asesores-academicos.update', $asesorAcademico->id], 'method' => 'patch']) !!}
 
                                @include('asesor_academicos.fields')
 

@@ -61,7 +61,7 @@ class AsesorEmpresarialController extends AppBaseController
 
         Flash::success('Asesor Empresarial saved successfully.');
 
-        return redirect(route('asesorEmpresarials.index'));
+        return redirect(route('asesores-empresariales.index'));
     }
 
     /**
@@ -78,7 +78,7 @@ class AsesorEmpresarialController extends AppBaseController
         if (empty($asesorEmpresarial)) {
             Flash::error('Asesor Empresarial not found');
 
-            return redirect(route('asesorEmpresarials.index'));
+            return redirect(route('asesores-empresariales.index'));
         }
 
         return view('asesor_empresarials.show')->with('asesorEmpresarial', $asesorEmpresarial);
@@ -98,7 +98,7 @@ class AsesorEmpresarialController extends AppBaseController
         if (empty($asesorEmpresarial)) {
             Flash::error('Asesor Empresarial not found');
 
-            return redirect(route('asesorEmpresarials.index'));
+            return redirect(route('asesores-empresariales.index'));
         }
 
         return view('asesor_empresarials.edit')->with('asesorEmpresarial', $asesorEmpresarial);
@@ -119,14 +119,14 @@ class AsesorEmpresarialController extends AppBaseController
         if (empty($asesorEmpresarial)) {
             Flash::error('Asesor Empresarial not found');
 
-            return redirect(route('asesorEmpresarials.index'));
+            return redirect(route('asesores-empresariales.index'));
         }
 
         $asesorEmpresarial = $this->asesorEmpresarialRepository->update($request->all(), $id);
 
         Flash::success('Asesor Empresarial updated successfully.');
 
-        return redirect(route('asesorEmpresarials.index'));
+        return redirect(route('asesores-empresariales.index'));
     }
 
     /**
@@ -143,13 +143,13 @@ class AsesorEmpresarialController extends AppBaseController
         if (empty($asesorEmpresarial)) {
             Flash::error('Asesor Empresarial not found');
 
-            return redirect(route('asesorEmpresarials.index'));
+            return redirect(route('asesores-empresariales.index'));
         }
 
         $this->asesorEmpresarialRepository->delete($id);
 
         Flash::success('Asesor Empresarial deleted successfully.');
 
-        return redirect(route('asesorEmpresarials.index'));
+        return redirect(route('asesores-empresariales.index'));
     }
 }

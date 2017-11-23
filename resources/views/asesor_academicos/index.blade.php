@@ -19,5 +19,5 @@
 @endsection
 
 @section('boton')
-  '<a class="btn btn-labeled btn-primary" href="{{ route('asesorAcademicos.create') }}"><i class="fa fa-plus"></i> Nuevo</a>'
+  '<a class="btn btn-labeled btn-primary" href="{{ route('asesores-academicos.create') }}"><i class="fa fa-plus"></i> Nuevo</a>'
 @endsection

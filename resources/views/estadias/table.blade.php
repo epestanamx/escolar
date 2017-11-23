@@ -1,5 +1,6 @@
 <table id="datatable" class="table table-striped table-bordered dataTable no-footer" cellspacing="0" width="100%" role="grid" aria-describedby="datatable_info" style="width: 100%;">
     <thead>
+      <th>Fecha</th>
       <th>Alumno</th>
       <th>Empresa</th>
       <th>Asesor estadiarial</th>
@@ -11,7 +12,8 @@
     <tbody>
       @foreach($estadias as $estadia)
           <tr>
-              <td>{!! $estadia->alumno->nombre . ' ' . $estadia->alumno->apellidos !!}</td>
+              <td>{{ $estadia->created_at->format('d/m/Y')}}</td>
+              <td>{!! $estadia->alumno->nombres . ' ' . $estadia->alumno->apellidos !!}</td>
               <td>{!! $estadia->proyecto->empresa->nombre !!}</td>
               <td>{!! $estadia->proyecto->asesorEmpresarial->titulo . ' '. $estadia->proyecto->asesorEmpresarial->nombres . ' ' . $estadia->proyecto->asesorEmpresarial->apellidos !!}</td>
               <td>{!! $estadia->proyecto->asesorAcademico->titulo . ' ' . $estadia->proyecto->asesorAcademico->nombres . ' ' . $estadia->proyecto->asesorEmpresarial->apellidos !!}</td>
