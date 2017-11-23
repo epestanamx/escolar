@@ -29,6 +29,8 @@ class EtapaController extends AppBaseController
      */
     public function index(Request $request)
     {
+        $this->verificarPermiso('ver_etapas_de_proyectos');
+
         $this->etapaRepository->pushCriteria(new RequestCriteria($request));
         $etapas = $this->etapaRepository->all();
 
@@ -43,6 +45,8 @@ class EtapaController extends AppBaseController
      */
     public function create()
     {
+        $this->verificarPermiso('agregar_etapas_de_proyectos');
+
         return view('etapas.create');
     }
 
@@ -55,6 +59,8 @@ class EtapaController extends AppBaseController
      */
     public function store(CreateEtapaRequest $request)
     {
+        $this->verificarPermiso('agregar_etapas_de_proyectos');
+
         $input = $request->all();
 
         $etapa = $this->etapaRepository->create($input);
@@ -73,6 +79,8 @@ class EtapaController extends AppBaseController
      */
     public function show($id)
     {
+        $this->verificarPermiso('ver_etapas_de_proyectos');
+
         $etapa = $this->etapaRepository->findWithoutFail($id);
 
         if (empty($etapa)) {
@@ -93,6 +101,8 @@ class EtapaController extends AppBaseController
      */
     public function edit($id)
     {
+        $this->verificarPermiso('modificar_etapas_de_proyectos');
+
         $etapa = $this->etapaRepository->findWithoutFail($id);
 
         if (empty($etapa)) {
@@ -114,6 +124,8 @@ class EtapaController extends AppBaseController
      */
     public function update($id, UpdateEtapaRequest $request)
     {
+        $this->verificarPermiso('modificar_etapas_de_proyectos');
+
         $etapa = $this->etapaRepository->findWithoutFail($id);
 
         if (empty($etapa)) {
@@ -138,6 +150,8 @@ class EtapaController extends AppBaseController
      */
     public function destroy($id)
     {
+        $this->verificarPermiso('eliminar_etapas_de_proyectos');
+
         $etapa = $this->etapaRepository->findWithoutFail($id);
 
         if (empty($etapa)) {

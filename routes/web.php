@@ -12,7 +12,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/home', 'HomeController@index');
     Route::resource('periodos', 'PeriodoController');
     Route::resource('carreras', 'CarreraController');
-    Route::resource('universidad', 'UniversidadController');
+    Route::get('universidad/{universidad}/edit', 'UniversidadController@edit')->name('universidad.edit');
+    Route::put('universidad', 'UniversidadController@update')->name('universidad.update');
+    // Route::resource('universidad', 'UniversidadController');
     Route::resource('asesores-academicos', 'AsesorAcademicoController');
     Route::resource('alumnos', 'AlumnoController');
     Route::resource('empresas', 'EmpresaController');

@@ -93,6 +93,7 @@ class UniversidadController extends AppBaseController
      */
     public function edit($id)
     {
+        $this->verificarPermiso('configuracion_universidad_modificar_datos');
         $universidad = $this->universidadRepository->findWithoutFail($id);
 
         if (empty($universidad)) {
@@ -114,6 +115,8 @@ class UniversidadController extends AppBaseController
      */
     public function update($id, UpdateUniversidadRequest $request)
     {
+        $this->verificarPermiso('configuracion_universidad_modificar_datos');
+        
         $universidad = $this->universidadRepository->findWithoutFail($id);
 
         if (empty($universidad)) {

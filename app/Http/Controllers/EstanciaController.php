@@ -31,6 +31,8 @@ class EstanciaController extends AppBaseController
      */
     public function index(Request $request)
     {
+        $this->verificarPermiso('ver_credenciales');
+
         $this->estanciaRepository->pushCriteria(new RequestCriteria($request));
         $estancias = $this->estanciaRepository->all();
 
@@ -45,6 +47,8 @@ class EstanciaController extends AppBaseController
      */
     public function create()
     {
+        $this->verificarPermiso('agregar_credenciales');
+
         return view('estancias.create');
     }
 
@@ -57,6 +61,8 @@ class EstanciaController extends AppBaseController
      */
     public function store(CreateEstanciaRequest $request)
     {
+        $this->verificarPermiso('agregar_credenciales');
+
         $input = $request->all();
 
         $estancia = $this->estanciaRepository->create($input);
@@ -77,6 +83,7 @@ class EstanciaController extends AppBaseController
      */
     public function show($id)
     {
+        $this->verificarPermiso('ver_credenciales');
         $estancia = $this->estanciaRepository->findWithoutFail($id);
 
         if (empty($estancia)) {
@@ -97,6 +104,8 @@ class EstanciaController extends AppBaseController
      */
     public function edit($id)
     {
+        $this->verificarPermiso('modificar_credenciales');
+
         $estancia = $this->estanciaRepository->findWithoutFail($id);
 
         if (empty($estancia)) {
@@ -118,6 +127,8 @@ class EstanciaController extends AppBaseController
      */
     public function update($id, UpdateEstanciaRequest $request)
     {
+        $this->verificarPermiso('modificar_credenciales');
+
         $estancia = $this->estanciaRepository->findWithoutFail($id);
 
         if (empty($estancia)) {
@@ -142,6 +153,8 @@ class EstanciaController extends AppBaseController
      */
     public function destroy($id)
     {
+        $this->verificarPermiso('eliminar_credenciales');
+
         $estancia = $this->estanciaRepository->findWithoutFail($id);
 
         if (empty($estancia)) {

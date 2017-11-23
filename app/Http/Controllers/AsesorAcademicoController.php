@@ -29,6 +29,7 @@ class AsesorAcademicoController extends AppBaseController
      */
     public function index(Request $request)
     {
+        $this->verificarPermiso('ver_asesores_academicos');
         $this->asesorAcademicoRepository->pushCriteria(new RequestCriteria($request));
         $asesorAcademicos = $this->asesorAcademicoRepository->all();
 
@@ -43,6 +44,7 @@ class AsesorAcademicoController extends AppBaseController
      */
     public function create()
     {
+        $this->verificarPermiso('agregar_asesores_academicos');
         return view('asesor_academicos.create');
     }
 
@@ -55,6 +57,8 @@ class AsesorAcademicoController extends AppBaseController
      */
     public function store(CreateAsesorAcademicoRequest $request)
     {
+        $this->verificarPermiso('agregar_asesores_academicos');
+
         $input = $request->all();
 
         $asesorAcademico = $this->asesorAcademicoRepository->create($input);
@@ -73,6 +77,8 @@ class AsesorAcademicoController extends AppBaseController
      */
     public function show($id)
     {
+        $this->verificarPermiso('ver_asesores_academicos');
+
         $asesorAcademico = $this->asesorAcademicoRepository->findWithoutFail($id);
 
         if (empty($asesorAcademico)) {
@@ -93,6 +99,8 @@ class AsesorAcademicoController extends AppBaseController
      */
     public function edit($id)
     {
+        $this->verificarPermiso('modificar_asesores_academicos');
+
         $asesorAcademico = $this->asesorAcademicoRepository->findWithoutFail($id);
 
         if (empty($asesorAcademico)) {
@@ -114,6 +122,8 @@ class AsesorAcademicoController extends AppBaseController
      */
     public function update($id, UpdateAsesorAcademicoRequest $request)
     {
+        $this->verificarPermiso('modificar_asesores_academicos');
+
         $asesorAcademico = $this->asesorAcademicoRepository->findWithoutFail($id);
 
         if (empty($asesorAcademico)) {
@@ -138,6 +148,8 @@ class AsesorAcademicoController extends AppBaseController
      */
     public function destroy($id)
     {
+        $this->verificarPermiso('eliminar_asesores_academicos');
+
         $asesorAcademico = $this->asesorAcademicoRepository->findWithoutFail($id);
 
         if (empty($asesorAcademico)) {

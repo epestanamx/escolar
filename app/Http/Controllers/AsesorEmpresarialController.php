@@ -29,6 +29,8 @@ class AsesorEmpresarialController extends AppBaseController
      */
     public function index(Request $request)
     {
+        $this->verificarPermiso('ver_asesores_empresariales');
+
         $this->asesorEmpresarialRepository->pushCriteria(new RequestCriteria($request));
         $asesorEmpresarials = $this->asesorEmpresarialRepository->all();
 
@@ -43,6 +45,8 @@ class AsesorEmpresarialController extends AppBaseController
      */
     public function create()
     {
+        $this->verificarPermiso('agregar_asesores_empresariales');
+
         return view('asesor_empresarials.create');
     }
 
@@ -55,6 +59,8 @@ class AsesorEmpresarialController extends AppBaseController
      */
     public function store(CreateAsesorEmpresarialRequest $request)
     {
+        $this->verificarPermiso('agregar_asesores_empresariales');
+
         $input = $request->all();
 
         $asesorEmpresarial = $this->asesorEmpresarialRepository->create($input);
@@ -73,6 +79,8 @@ class AsesorEmpresarialController extends AppBaseController
      */
     public function show($id)
     {
+        $this->verificarPermiso('ver_asesores_empresariales');
+
         $asesorEmpresarial = $this->asesorEmpresarialRepository->findWithoutFail($id);
 
         if (empty($asesorEmpresarial)) {
@@ -93,6 +101,8 @@ class AsesorEmpresarialController extends AppBaseController
      */
     public function edit($id)
     {
+        $this->verificarPermiso('modificar_asesores_empresariales');
+
         $asesorEmpresarial = $this->asesorEmpresarialRepository->findWithoutFail($id);
 
         if (empty($asesorEmpresarial)) {
@@ -114,6 +124,8 @@ class AsesorEmpresarialController extends AppBaseController
      */
     public function update($id, UpdateAsesorEmpresarialRequest $request)
     {
+        $this->verificarPermiso('modificar_asesores_empresariales');
+
         $asesorEmpresarial = $this->asesorEmpresarialRepository->findWithoutFail($id);
 
         if (empty($asesorEmpresarial)) {
@@ -138,6 +150,8 @@ class AsesorEmpresarialController extends AppBaseController
      */
     public function destroy($id)
     {
+        $this->verificarPermiso('eliminar_asesores_empresariales');
+
         $asesorEmpresarial = $this->asesorEmpresarialRepository->findWithoutFail($id);
 
         if (empty($asesorEmpresarial)) {

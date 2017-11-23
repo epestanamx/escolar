@@ -31,6 +31,8 @@ class CartaPresentacionController extends AppBaseController
      */
     public function index(Request $request)
     {
+        $this->verificarPermiso('ver_cartas_de_presentacion');
+
         $this->cartaPresentacionRepository->pushCriteria(new RequestCriteria($request));
         $cartaPresentacions = $this->cartaPresentacionRepository->all();
 
@@ -45,6 +47,7 @@ class CartaPresentacionController extends AppBaseController
      */
     public function create()
     {
+        $this->verificarPermiso('agregar_cartas_de_presentacion');
         return view('carta_presentacions.create');
     }
 
@@ -57,6 +60,7 @@ class CartaPresentacionController extends AppBaseController
      */
     public function store(CreateCartaPresentacionRequest $request)
     {
+        $this->verificarPermiso('agregar_cartas_de_presentacion');
         $input = $request->all();
 
         $cartaPresentacion = $this->cartaPresentacionRepository->create($input);
@@ -77,6 +81,8 @@ class CartaPresentacionController extends AppBaseController
      */
     public function show($id)
     {
+        $this->verificarPermiso('ver_cartas_de_presentacion');
+
         $cartaPresentacion = $this->cartaPresentacionRepository->findWithoutFail($id);
 
         if (empty($cartaPresentacion)) {
@@ -97,6 +103,8 @@ class CartaPresentacionController extends AppBaseController
      */
     public function edit($id)
     {
+        $this->verificarPermiso('modificar_cartas_de_presentacion');
+
         $cartaPresentacion = $this->cartaPresentacionRepository->findWithoutFail($id);
 
         if (empty($cartaPresentacion)) {
@@ -118,6 +126,8 @@ class CartaPresentacionController extends AppBaseController
      */
     public function update($id, UpdateCartaPresentacionRequest $request)
     {
+        $this->verificarPermiso('modificar_cartas_de_presentacion');
+
         $cartaPresentacion = $this->cartaPresentacionRepository->findWithoutFail($id);
 
         if (empty($cartaPresentacion)) {
@@ -142,6 +152,8 @@ class CartaPresentacionController extends AppBaseController
      */
     public function destroy($id)
     {
+        $this->verificarPermiso('eliminar_cartas_de_presentacion');
+
         $cartaPresentacion = $this->cartaPresentacionRepository->findWithoutFail($id);
 
         if (empty($cartaPresentacion)) {

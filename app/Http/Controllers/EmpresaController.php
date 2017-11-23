@@ -29,6 +29,8 @@ class EmpresaController extends AppBaseController
      */
     public function index(Request $request)
     {
+        $this->verificarPermiso('ver_empresas');
+
         $this->empresaRepository->pushCriteria(new RequestCriteria($request));
         $empresas = $this->empresaRepository->all();
 
@@ -43,6 +45,8 @@ class EmpresaController extends AppBaseController
      */
     public function create()
     {
+        $this->verificarPermiso('agregar_empresas');
+
         return view('empresas.create');
     }
 
@@ -55,6 +59,8 @@ class EmpresaController extends AppBaseController
      */
     public function store(CreateEmpresaRequest $request)
     {
+        $this->verificarPermiso('agregar_empresas');
+
         $input = $request->all();
 
         $empresa = $this->empresaRepository->create($input);
@@ -73,6 +79,8 @@ class EmpresaController extends AppBaseController
      */
     public function show($id)
     {
+        $this->verificarPermiso('ver_empresas');
+
         $empresa = $this->empresaRepository->findWithoutFail($id);
 
         if (empty($empresa)) {
@@ -93,6 +101,8 @@ class EmpresaController extends AppBaseController
      */
     public function edit($id)
     {
+        $this->verificarPermiso('modificar_empresas');
+
         $empresa = $this->empresaRepository->findWithoutFail($id);
 
         if (empty($empresa)) {
@@ -114,6 +124,8 @@ class EmpresaController extends AppBaseController
      */
     public function update($id, UpdateEmpresaRequest $request)
     {
+        $this->verificarPermiso('modificar_empresas');
+
         $empresa = $this->empresaRepository->findWithoutFail($id);
 
         if (empty($empresa)) {
@@ -138,6 +150,8 @@ class EmpresaController extends AppBaseController
      */
     public function destroy($id)
     {
+        $this->verificarPermiso('modificar_empresas');
+
         $empresa = $this->empresaRepository->findWithoutFail($id);
 
         if (empty($empresa)) {

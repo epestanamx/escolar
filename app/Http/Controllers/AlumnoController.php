@@ -29,6 +29,8 @@ class AlumnoController extends AppBaseController
      */
     public function index(Request $request)
     {
+        $this->verificarPermiso('ver_alumnos');
+
         $this->alumnoRepository->pushCriteria(new RequestCriteria($request));
         $alumnos = $this->alumnoRepository->all();
 
@@ -43,6 +45,8 @@ class AlumnoController extends AppBaseController
      */
     public function create()
     {
+        $this->verificarPermiso('agregar_alumnos');
+
         return view('alumnos.create');
     }
 
@@ -55,6 +59,8 @@ class AlumnoController extends AppBaseController
      */
     public function store(CreateAlumnoRequest $request)
     {
+        $this->verificarPermiso('agregar_alumnos');
+
         $input = $request->all();
         $input['activado'] = false;
         $input['email_oficial'] = $input['matricula'] . '@estudiantes.upqroo.edu.mx';
@@ -77,6 +83,8 @@ class AlumnoController extends AppBaseController
      */
     public function show($id)
     {
+        $this->verificarPermiso('ver_alumnos');
+
         $alumno = $this->alumnoRepository->findWithoutFail($id);
 
         if (empty($alumno)) {
@@ -97,6 +105,8 @@ class AlumnoController extends AppBaseController
      */
     public function edit($id)
     {
+        $this->verificarPermiso('modificar_alumnos');
+
         $alumno = $this->alumnoRepository->findWithoutFail($id);
 
         if (empty($alumno)) {
@@ -118,6 +128,8 @@ class AlumnoController extends AppBaseController
      */
     public function update($id, UpdateAlumnoRequest $request)
     {
+        $this->verificarPermiso('modificar_alumnos');
+
         $alumno = $this->alumnoRepository->findWithoutFail($id);
 
         if (empty($alumno)) {
@@ -142,6 +154,8 @@ class AlumnoController extends AppBaseController
      */
     public function destroy($id)
     {
+        $this->verificarPermiso('eliminar_alumnos');
+
         $alumno = $this->alumnoRepository->findWithoutFail($id);
 
         if (empty($alumno)) {
@@ -170,10 +184,5 @@ class AlumnoController extends AppBaseController
         $alumno->save();
 
         return view('alumnos.activado');
-    }
-
-    public function presentacion()
-    {
-        return view('alumnos.presentacion');
     }
 }

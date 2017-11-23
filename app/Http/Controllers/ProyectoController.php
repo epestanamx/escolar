@@ -29,6 +29,8 @@ class ProyectoController extends AppBaseController
      */
     public function index(Request $request)
     {
+        $this->verificarPermiso('ver_proyectos');
+
         $this->proyectoRepository->pushCriteria(new RequestCriteria($request));
         $proyectos = $this->proyectoRepository->all();
 
@@ -43,6 +45,8 @@ class ProyectoController extends AppBaseController
      */
     public function create()
     {
+        $this->verificarPermiso('agregar_proyectos');
+
         return view('proyectos.create');
     }
 
@@ -55,6 +59,8 @@ class ProyectoController extends AppBaseController
      */
     public function store(CreateProyectoRequest $request)
     {
+        $this->verificarPermiso('agregar_proyectos');
+
         $input = $request->all();
 
         $proyecto = $this->proyectoRepository->create($input);
@@ -73,6 +79,8 @@ class ProyectoController extends AppBaseController
      */
     public function show($id)
     {
+        $this->verificarPermiso('ver_proyectos');
+
         $proyecto = $this->proyectoRepository->findWithoutFail($id);
 
         if (empty($proyecto)) {
@@ -93,6 +101,8 @@ class ProyectoController extends AppBaseController
      */
     public function edit($id)
     {
+        $this->verificarPermiso('modificar_proyectos');
+
         $proyecto = $this->proyectoRepository->findWithoutFail($id);
 
         if (empty($proyecto)) {
@@ -114,6 +124,8 @@ class ProyectoController extends AppBaseController
      */
     public function update($id, UpdateProyectoRequest $request)
     {
+        $this->verificarPermiso('modificar_proyectos');
+
         $proyecto = $this->proyectoRepository->findWithoutFail($id);
 
         if (empty($proyecto)) {
@@ -138,6 +150,8 @@ class ProyectoController extends AppBaseController
      */
     public function destroy($id)
     {
+        $this->verificarPermiso('eliminar_proyectos');
+
         $proyecto = $this->proyectoRepository->findWithoutFail($id);
 
         if (empty($proyecto)) {

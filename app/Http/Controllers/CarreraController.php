@@ -29,6 +29,8 @@ class CarreraController extends AppBaseController
      */
     public function index(Request $request)
     {
+        $this->verificarPermiso('ver_carreras');
+
         $this->carreraRepository->pushCriteria(new RequestCriteria($request));
         $carreras = $this->carreraRepository->all();
 
@@ -43,6 +45,8 @@ class CarreraController extends AppBaseController
      */
     public function create()
     {
+        $this->verificarPermiso('agregar_carreras');
+
         return view('carreras.create');
     }
 
@@ -55,6 +59,8 @@ class CarreraController extends AppBaseController
      */
     public function store(CreateCarreraRequest $request)
     {
+        $this->verificarPermiso('agregar_carreras');
+
         $input = $request->all();
 
         $carrera = $this->carreraRepository->create($input);
@@ -73,6 +79,8 @@ class CarreraController extends AppBaseController
      */
     public function show($id)
     {
+        $this->verificarPermiso('ver_carreras');
+
         $carrera = $this->carreraRepository->findWithoutFail($id);
 
         if (empty($carrera)) {
@@ -93,6 +101,8 @@ class CarreraController extends AppBaseController
      */
     public function edit($id)
     {
+        $this->verificarPermiso('modificar_carreras');
+
         $carrera = $this->carreraRepository->findWithoutFail($id);
 
         if (empty($carrera)) {
@@ -114,6 +124,8 @@ class CarreraController extends AppBaseController
      */
     public function update($id, UpdateCarreraRequest $request)
     {
+        $this->verificarPermiso('modificar_carreras');
+
         $carrera = $this->carreraRepository->findWithoutFail($id);
 
         if (empty($carrera)) {
@@ -138,6 +150,8 @@ class CarreraController extends AppBaseController
      */
     public function destroy($id)
     {
+        $this->verificarPermiso('eliminar_carreras');
+
         $carrera = $this->carreraRepository->findWithoutFail($id);
 
         if (empty($carrera)) {

@@ -29,6 +29,8 @@ class PeriodoController extends AppBaseController
      */
     public function index(Request $request)
     {
+        $this->verificarPermiso('ver_periodos_escolares');
+
         $this->periodoRepository->pushCriteria(new RequestCriteria($request));
         $periodos = $this->periodoRepository->all();
 
@@ -43,6 +45,8 @@ class PeriodoController extends AppBaseController
      */
     public function create()
     {
+        $this->verificarPermiso('agregar_periodos_escolares');
+
         return view('periodos.create');
     }
 
@@ -55,6 +59,8 @@ class PeriodoController extends AppBaseController
      */
     public function store(CreatePeriodoRequest $request)
     {
+        $this->verificarPermiso('agregar_periodos_escolares');
+
         $input = $request->all();
 
         $periodo = $this->periodoRepository->create($input);
@@ -73,6 +79,8 @@ class PeriodoController extends AppBaseController
      */
     public function show($id)
     {
+        $this->verificarPermiso('ver_periodos_escolares');
+
         $periodo = $this->periodoRepository->findWithoutFail($id);
 
         if (empty($periodo)) {
@@ -93,6 +101,8 @@ class PeriodoController extends AppBaseController
      */
     public function edit($id)
     {
+        $this->verificarPermiso('modificar_periodos_escolares');
+
         $periodo = $this->periodoRepository->findWithoutFail($id);
 
         if (empty($periodo)) {
@@ -114,6 +124,8 @@ class PeriodoController extends AppBaseController
      */
     public function update($id, UpdatePeriodoRequest $request)
     {
+        $this->verificarPermiso('modificar_periodos_escolares');
+
         $periodo = $this->periodoRepository->findWithoutFail($id);
 
         if (empty($periodo)) {
@@ -138,6 +150,8 @@ class PeriodoController extends AppBaseController
      */
     public function destroy($id)
     {
+        $this->verificarPermiso('eliminar_periodos_escolares');
+
         $periodo = $this->periodoRepository->findWithoutFail($id);
 
         if (empty($periodo)) {

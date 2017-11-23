@@ -31,6 +31,8 @@ class EstadiasController extends AppBaseController
      */
     public function index(Request $request)
     {
+        $this->verificarPermiso('ver_estadias');
+
         $this->estadiasRepository->pushCriteria(new RequestCriteria($request));
         $estadias = $this->estadiasRepository->all();
 
@@ -45,6 +47,8 @@ class EstadiasController extends AppBaseController
      */
     public function create()
     {
+        $this->verificarPermiso('agregar_estadias');
+
         return view('estadias.create');
     }
 
@@ -57,6 +61,8 @@ class EstadiasController extends AppBaseController
      */
     public function store(CreateEstadiasRequest $request)
     {
+        $this->verificarPermiso('agregar_estadias');
+
         $input = $request->all();
 
         $estadias = $this->estadiasRepository->create($input);
@@ -77,6 +83,8 @@ class EstadiasController extends AppBaseController
      */
     public function show($id)
     {
+        $this->verificarPermiso('ver_estadias');
+
         $estadias = $this->estadiasRepository->findWithoutFail($id);
 
         if (empty($estadias)) {
@@ -97,6 +105,8 @@ class EstadiasController extends AppBaseController
      */
     public function edit($id)
     {
+        $this->verificarPermiso('modificar_estadias');
+
         $estadias = $this->estadiasRepository->findWithoutFail($id);
 
         if (empty($estadias)) {
@@ -118,6 +128,8 @@ class EstadiasController extends AppBaseController
      */
     public function update($id, UpdateEstadiasRequest $request)
     {
+        $this->verificarPermiso('modificar_estadias');
+
         $estadias = $this->estadiasRepository->findWithoutFail($id);
 
         if (empty($estadias)) {
@@ -142,6 +154,8 @@ class EstadiasController extends AppBaseController
      */
     public function destroy($id)
     {
+        $this->verificarPermiso('eliminar_estadias');
+
         $estadias = $this->estadiasRepository->findWithoutFail($id);
 
         if (empty($estadias)) {
